@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #2d2d2d; /* grey */
+}
+
+/* Scrollbar thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+  background: #6b7280; /* Tailwind gray-500 */
+  border-radius: 4px;
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563; /* gray-600 */
+}
+
+/* On active */
+::-webkit-scrollbar-thumb:active {
+  background: #6b7280; /* gray-500 */
+}
