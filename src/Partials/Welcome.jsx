@@ -7,7 +7,7 @@ export default function Welcome() {
     "What are you learning?",
     "What are you doing?",
     "Ready when you are.",
-    "What’s on the agenda today?",
+    "What's on the agenda today?",
   ];
 
   const [note] = useState(
