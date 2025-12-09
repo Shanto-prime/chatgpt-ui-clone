@@ -25,3 +25,18 @@
 ::-webkit-scrollbar-thumb:active {
   background: #6b7280; /* gray-500 */
 }
+.sidebarList li {
+  padding: 7.5px 12.5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #ffffff1a;
+  }
+}
+.sidebarList li span:nth-child(2) {
+  display: none;
+}
+.sidebarList li:hover span:nth-child(2) {
+  display: inline-block;
+}
