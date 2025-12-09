@@ -16,5 +16,9 @@ export default function Welcome() {
     () => notes[Math.floor(Math.random() * notes.length)]
   );
 
-  return <span>{note}</span>;
+  return (
+    <div className="h-14 mb-[35px]">
+      <span className="text-[28px] ">{note}</span>
+    </div>
+  );
 }

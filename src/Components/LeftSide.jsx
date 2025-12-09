@@ -73,7 +73,7 @@ export default function LeftSide() {
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon"
+                className="icon"
                 aria-hidden="true"
               >
                 <path d="M15.498 8.50159C16.3254 8.50159 16.9959 9.17228 16.9961 9.99963C16.9961 10.8271 16.3256 11.4987 15.498 11.4987C14.6705 11.4987 14 10.8271 14 9.99963C14.0002 9.17228 14.6706 8.50159 15.498 8.50159Z"></path>
