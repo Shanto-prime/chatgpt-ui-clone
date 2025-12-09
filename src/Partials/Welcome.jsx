@@ -2,12 +2,14 @@ import { useState } from "react";
 
 export default function Welcome() {
   const notes = [
-    "What’s on your mind today?",
+    "What's on your mind today?",
     "What are you working on?",
     "What are you learning?",
     "What are you doing?",
     "Ready when you are.",
     "What's on the agenda today?",
+    "What's on your mind?",
+    "What can I help with?",
   ];
 
   const [note] = useState(
