@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  font-size: 16px;
+}
 
 /* Scrollbar width */
 ::-webkit-scrollbar {
@@ -39,4 +44,12 @@
 }
 .sidebarList li:hover span:nth-child(2) {
   display: inline-block;
+}
+p.userInput:empty::before {
+  content: attr(placeholder);
+  color: #6b7280;
+  pointer-events: none;
+}
+p.userInput[contenteditable]:focus::before {
+  content: "";
 }
