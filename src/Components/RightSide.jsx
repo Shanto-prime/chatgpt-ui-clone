@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Welcome from "../Partials/Welcome";
+import Topbar from "./Topbar";
 
 export default function RightSide() {
   const hiddenTextRef = useRef(null);
@@ -14,26 +15,59 @@ export default function RightSide() {
   return (
     <>
       <div className="flex-1 bg-[#212121] overflow-y-auto text-white">
+        <Topbar />
         <div className="flex flex-col h-full text-center justify-center px-8">
           <Welcome />
           <div className="mx-12 flex items-center justify-center">
             <div className="flex items-center justify-center mx-auto rounded-[28px] w-full bg-[#303030] p-3">
-              <div
-                data-tip="Add files and more"
-                className="tooltip tooltip-bottom flex items-center justify-center w-11 h-11 hover:bg-[#454545] rounded-full transition-all duration-300 cursor-pointer  "
-              >
-                <button className="flex flex-1 items-center justify-center cursor-pointer">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon cursor-pointer"
-                  >
-                    <path d="M9.33496 16.5V10.665H3.5C3.13273 10.665 2.83496 10.3673 2.83496 10C2.83496 9.63273 3.13273 9.33496 3.5 9.33496H9.33496V3.5C9.33496 3.13273 9.63273 2.83496 10 2.83496C10.3673 2.83496 10.665 3.13273 10.665 3.5V9.33496H16.5L16.6338 9.34863C16.9369 9.41057 17.165 9.67857 17.165 10C17.165 10.3214 16.9369 10.5894 16.6338 10.6514L16.5 10.665H10.665V16.5C10.665 16.8673 10.3673 17.165 10 17.165C9.63273 17.165 9.33496 16.8673 9.33496 16.5Z"></path>
-                  </svg>
-                </button>
+              <div className="dropdown">
+                <div
+                  data-tip="Add files and more"
+                  className="tooltip tooltip-bottom flex items-center justify-center w-11 h-11 hover:bg-[#454545] rounded-full transition-all duration-300 cursor-pointer  "
+                >
+                  <button className="flex flex-1 items-center justify-center cursor-pointer">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="icon cursor-pointer"
+                    >
+                      <path d="M9.33496 16.5V10.665H3.5C3.13273 10.665 2.83496 10.3673 2.83496 10C2.83496 9.63273 3.13273 9.33496 3.5 9.33496H9.33496V3.5C9.33496 3.13273 9.63273 2.83496 10 2.83496C10.3673 2.83496 10.665 3.13273 10.665 3.5V9.33496H16.5L16.6338 9.34863C16.9369 9.41057 17.165 9.67857 17.165 10C17.165 10.3214 16.9369 10.5894 16.6338 10.6514L16.5 10.665H10.665V16.5C10.665 16.8673 10.3673 17.165 10 17.165C9.63273 17.165 9.33496 16.8673 9.33496 16.5Z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <ul className="dropdown-content menu text-base p-2 tooShadow bg-[#303030] rounded-box w-72 z-10">
+                  <li>
+                    <div>
+                      <span>Add Photos & File</span>
+                    </div>
+                  </li>
+                  <li>Create Image</li>
+                  <li>Thinking</li>
+                  <li>Deep Research</li>
+                  <li>Shopping</li>
+                  <li className="dropdown dropdown-hover">
+                    <div tabIndex={0} role="button" className="">
+                      More &gt;
+                    </div>
+                    <ul
+                      className="dropdown-content menu p-2 tooShadow bg-[#303030] text-base rounded-box w-52 z-20"
+                      tabIndex={0}
+                    >
+                      <li>
+                        <a>Study and learn</a>
+                      </li>
+                      <li>
+                        <a>Web search</a>
+                      </li>
+                      <li>
+                        <a>Canvas</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
               <div className="flex-1 mx-3">
                 <textarea

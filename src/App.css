@@ -47,9 +47,12 @@
 }
 p.userInput:empty::before {
   content: attr(placeholder);
-  color: #6b7280;
+  color: #afafaf;
   pointer-events: none;
 }
 p.userInput[contenteditable]:focus::before {
   content: "";
+}
+.tooShadow {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
