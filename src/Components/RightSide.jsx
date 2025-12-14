@@ -1,4 +1,9 @@
 import { useRef } from "react";
+import AttachmentSVG from "../Partials/AttachmentSVG";
+import DeepSearchSVG from "../Partials/DeepSearchSVG";
+import ImageSVG from "../Partials/ImageSVG";
+import ShoppingSearchSVG from "../Partials/ShoppingSearchSVG";
+import ThinkingSVG from "../Partials/ThinkingSVG";
 import Welcome from "../Partials/Welcome";
 import Topbar from "./Topbar";
 
@@ -38,22 +43,60 @@ export default function RightSide() {
                     </svg>
                   </button>
                 </div>
-                <ul className="dropdown-content menu text-base p-2 tooShadow bg-[#303030] rounded-box w-72 z-10">
-                  <li>
-                    <div>
-                      <span>Add Photos & File</span>
+                <ul className="dropdown-content menu text-base p-2 tooShadow  bg-[#303030] rounded-box w-72 z-10">
+                  <li className="hover:bg-[#ffffff1a]">
+                    <div className="flex items-center justify-between gap-2 group">
+                      <div className="flex items-center gap-2">
+                        <AttachmentSVG />
+                        <span>Add Photos & File</span>
+                      </div>
+                      <div className="text-[#aeaeae] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        CTRL + U
+                      </div>
                     </div>
                   </li>
-                  <li>Create Image</li>
-                  <li>Thinking</li>
-                  <li>Deep Research</li>
-                  <li>Shopping</li>
-                  <li className="dropdown dropdown-hover">
+                  <li>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <ImageSVG />
+                        <span>Create Image</span>
+                      </div>
+                      <div className="text-[#aeaeae]"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <ThinkingSVG />
+                        <span>Thinking</span>
+                      </div>
+                      <div></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <DeepSearchSVG />
+                        <span>Deep Research</span>
+                      </div>
+                      <div></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <ShoppingSearchSVG />
+                        <span>Shopping</span>
+                      </div>
+                      <div></div>
+                    </div>
+                  </li>
+                  <li className="dropdown dropdown-hover dropdown-right dropdown-center">
                     <div tabIndex={0} role="button" className="">
                       More &gt;
                     </div>
                     <ul
-                      className="dropdown-content menu p-2 tooShadow bg-[#303030] text-base rounded-box w-52 z-20"
+                      className="dropdown-content menu p-2 ms-0 tooShadow bg-[#303030] text-base rounded-box w-52 z-20"
                       tabIndex={0}
                     >
                       <li>
