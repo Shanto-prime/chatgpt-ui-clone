@@ -1,22 +1,38 @@
 import DownArrowSVG from "../Partials/DownArrowSVG";
+import GroupChatSVG from "../Partials/GroupChatSVG";
+import UserPlusSVG from "../Partials/UserPlusSVG";
 
 export default function Topbar() {
   const handleCross = () => {
     document.getElementById("upgrade").style.display = "none";
   };
   return (
-    <>
+    <div className="absolute top-0 left-0 right-0">
       <div className="flex items-center justify-between p-4 relative">
         <div className="flex items-center gap-2">
           <h2 className=" text-2xl">ChatGPT</h2>
           <DownArrowSVG />
         </div>
-        <div>
+        <div className="flex items-center gap-2">
+          <div
+            className="flex items-center justify-center cursor-pointer tooltip tooltip-bottom w-11 h-11 hover:bg-[#454545] rounded-full transition-all duration-300"
+            data-tip="Start A Group Chat"
+          >
+            <UserPlusSVG />
+          </div>
+          <div
+            className="flex items-center justify-center cursor-pointer tooltip tooltip-bottom w-11 h-11 hover:bg-[#454545] rounded-full transition-all duration-300"
+            data-tip="Turn On Temporary Chat"
+          >
+            <GroupChatSVG />
+          </div>
+        </div>
+        <div className="hidden">
           <div>share</div>
           <div>add people</div>
           <div>---</div>
         </div>
-        <span id="upgrade" className="absolute top-0 right-1/2">
+        <span id="upgrade" className="absolute top-4 right-1/2">
           <div className="inline-flex items-center gap-1 rounded-full text-sm font-medium py-2 pe-2 bg-[#F1F1FB] text-[#5D5BD0] hover:bg-[#E4E4F6] dark:bg-[#373669] dark:text-[#DCDBF6] dark:hover:bg-[#414071]">
             <button
               type="button"
@@ -63,6 +79,6 @@ export default function Topbar() {
           </div>
         </span>
       </div>
-    </>
+    </div>
   );
 }
