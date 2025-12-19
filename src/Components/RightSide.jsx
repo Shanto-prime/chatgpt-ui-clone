@@ -27,9 +27,13 @@ export default function RightSide() {
   };
   const runSearch = () => {
     const text = editableRef.current.innerText.trim();
+    console.log(editableRef.current.innerText.trim());
     if (text !== "") {
       setQuery(text);
       setIsEnter(true);
+      editableRef.current.innerText = "";
+      setHasText(false);
+      hiddenTextRef.current.value = "";
     }
   };
 
