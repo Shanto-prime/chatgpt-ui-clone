@@ -1,29 +1,64 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import AttachmentSVG from "../Partials/AttachmentSVG";
 import DeepSearchSVG from "../Partials/DeepSearchSVG";
 import ImageSVG from "../Partials/ImageSVG";
+import SearchResult from "../Partials/SearchResult";
 import ShoppingSearchSVG from "../Partials/ShoppingSearchSVG";
 import ThinkingSVG from "../Partials/ThinkingSVG";
+import UploadSVG from "../Partials/UploadSVG";
 import Welcome from "../Partials/Welcome";
 import Topbar from "./Topbar";
 
 export default function RightSide() {
   const hiddenTextRef = useRef(null);
   const editableRef = useRef(null);
+  const [hasText, setHasText] = useState(false);
+  const [isEnter, setIsEnter] = useState(false);
+  const [query, setQuery] = useState("");
   const handleInput = () => {
     const el = editableRef.current;
     if (el.innerText.trim() === "") {
       el.innerHTML = "";
+      setHasText(false);
+    } else {
+      setHasText(true);
     }
     hiddenTextRef.current.value = el.innerText;
   };
+  const runSearch = () => {
+    const text = editableRef.current.innerText.trim();
+    if (text !== "") {
+      setQuery(text);
+      setIsEnter(true);
+    }
+  };
+
+  const handleSearch = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      runSearch();
+    }
+  };
+
+  const handleSearchClick = () => {
+    runSearch();
+  };
+
   return (
     <>
-      <div className="flex-1 bg-[#212121] overflow-y-auto text-white relative">
-        <Topbar />
-        <div className="flex flex-col h-full text-center justify-center px-8">
-          <Welcome />
-          <div className="mx-12 flex items-center justify-center">
+      <div className="flex-1 bg-[#212121] text-white flex flex-col">
+        <div className="relative h-20">
+          <Topbar />
+        </div>
+        <div className="flex-1 flex flex-col justify-center overflow-y-auto">
+          <div className=" overflow-y-auto px-8">
+            <div className="text-center">
+              {!isEnter && <Welcome />}
+              {isEnter && <SearchResult query={query} />}
+            </div>
+          </div>
+          {/* user input */}
+          <div className="mx-12 flex flex-col items-center justify-center p-4">
             <div className="flex items-center justify-center mx-auto rounded-[28px] w-full bg-[#303030] p-3">
               <div className="dropdown">
                 <div
@@ -100,13 +135,31 @@ export default function RightSide() {
                       tabIndex={0}
                     >
                       <li>
-                        <a>Study and learn</a>
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <ShoppingSearchSVG />
+                            <span>Study and learn</span>
+                          </div>
+                          <div></div>
+                        </div>
                       </li>
                       <li>
-                        <a>Web search</a>
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2">
+                            <ShoppingSearchSVG />
+                            <span>Web search</span>
+                          </div>
+                          <div></div>
+                        </div>
                       </li>
                       <li>
-                        <a>Canvas</a>
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2">
+                            <ShoppingSearchSVG />
+                            <span>Canvas</span>
+                          </div>
+                          <div></div>
+                        </div>
                       </li>
                     </ul>
                   </li>
@@ -127,6 +180,7 @@ export default function RightSide() {
                   contentEditable
                   onInput={handleInput}
                   placeholder="Ask anything"
+                  onKeyDown={handleSearch}
                 ></p>
               </div>
               <div className="flex items-center justify-center mx-auto rounded-[28px] ">
@@ -150,30 +204,48 @@ export default function RightSide() {
                   </button>
                 </div>
               </div>
-              <div
-                data-tip="Use Voice mode"
-                className="tooltip tooltip-bottom flex items-center justify-center w-11 h-11 bg-[#0169cc] hover:bg-[#0e579d] rounded-full transition-all duration-300 cursor-pointer"
-              >
-                <div className="w-full flex items-center justify-center cursor-pointer">
-                  <button>
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M7.91667 3.33331C8.60702 3.33331 9.16667 3.89296 9.16667 4.58331V15.4166C9.16667 16.107 8.60702 16.6666 7.91667 16.6666C7.22631 16.6666 6.66667 16.107 6.66667 15.4166V4.58331C6.66667 3.89296 7.22631 3.33331 7.91667 3.33331ZM12.0833 5.83331C12.7737 5.83331 13.3333 6.39296 13.3333 7.08331V12.9166C13.3333 13.607 12.7737 14.1666 12.0833 14.1666C11.393 14.1666 10.8333 13.607 10.8333 12.9166V7.08331C10.8333 6.39296 11.393 5.83331 12.0833 5.83331ZM3.75 7.49998C4.44036 7.49998 5 8.05962 5 8.74998V11.25C5 11.9403 4.44036 12.5 3.75 12.5C3.05964 12.5 2.5 11.9403 2.5 11.25V8.74998C2.5 8.05962 3.05964 7.49998 3.75 7.49998ZM16.25 7.49998C16.9404 7.49998 17.5 8.05962 17.5 8.74998V11.25C17.5 11.9403 16.9404 12.5 16.25 12.5C15.5596 12.5 15 11.9403 15 11.25V8.74998C15 8.05962 15.5596 7.49998 16.25 7.49998Z"
-                      ></path>
-                    </svg>
-                  </button>
+              {!hasText && (
+                <div
+                  data-tip="Use Voice mode"
+                  className=" tooltip tooltip-bottom flex items-center justify-center w-11 h-11 bg-[#0169cc] hover:bg-[#0e579d] rounded-full transition-all duration-300 cursor-pointer"
+                >
+                  <div className="w-full flex items-center justify-center cursor-pointer">
+                    <button>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M7.91667 3.33331C8.60702 3.33331 9.16667 3.89296 9.16667 4.58331V15.4166C9.16667 16.107 8.60702 16.6666 7.91667 16.6666C7.22631 16.6666 6.66667 16.107 6.66667 15.4166V4.58331C6.66667 3.89296 7.22631 3.33331 7.91667 3.33331ZM12.0833 5.83331C12.7737 5.83331 13.3333 6.39296 13.3333 7.08331V12.9166C13.3333 13.607 12.7737 14.1666 12.0833 14.1666C11.393 14.1666 10.8333 13.607 10.8333 12.9166V7.08331C10.8333 6.39296 11.393 5.83331 12.0833 5.83331ZM3.75 7.49998C4.44036 7.49998 5 8.05962 5 8.74998V11.25C5 11.9403 4.44036 12.5 3.75 12.5C3.05964 12.5 2.5 11.9403 2.5 11.25V8.74998C2.5 8.05962 3.05964 7.49998 3.75 7.49998ZM16.25 7.49998C16.9404 7.49998 17.5 8.05962 17.5 8.74998V11.25C17.5 11.9403 16.9404 12.5 16.25 12.5C15.5596 12.5 15 11.9403 15 11.25V8.74998C15 8.05962 15.5596 7.49998 16.25 7.49998Z"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
+              {hasText && (
+                <button
+                  onClick={handleSearchClick}
+                  data-tip="Ask To AI"
+                  className="tooltip tooltip-bottom flex items-center justify-center w-11 h-11 bg-[#0169cc] hover:bg-[#0e579d] rounded-full transition-all duration-300 cursor-pointer"
+                >
+                  <div className="w-full flex items-center justify-center cursor-pointer">
+                    <div>
+                      <UploadSVG />
+                    </div>
+                  </div>
+                </button>
+              )}
             </div>
+            {isEnter && (
+              <span>ChatGPT can make mistakes. Check important info.</span>
+            )}
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function Topbar() {
     document.getElementById("upgrade").style.display = "none";
   };
   return (
-    <div className="absolute top-0 left-0 right-0">
+    <div className="absolute top-0 left-0 right-0 border-b border-[#424242]">
       <div className="flex items-center justify-between p-4 relative">
         <div className="flex items-center gap-2">
           <h2 className=" text-2xl">ChatGPT</h2>
