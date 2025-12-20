@@ -30,11 +30,23 @@
 ::-webkit-scrollbar-thumb:active {
   background: #6b7280; /* gray-500 */
 }
+.sidebarList {
+  max-width: 260px;
+}
 .sidebarList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
   padding: 7.5px 12.5px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 18px;
   &:hover {
     background-color: #ffffff1a;
   }

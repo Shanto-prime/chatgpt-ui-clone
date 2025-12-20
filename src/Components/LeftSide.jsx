@@ -65,7 +65,7 @@ export default function LeftSide() {
             </svg>
           </li>
           <li>
-            <span>home decoration</span>
+            <span>home decoration is more than just a trend</span>
             <span>
               <svg
                 width="20"
